@@ -1,0 +1,634 @@
+{
+    "data": [
+        {
+            "Req. Key": 1001,
+            "Req. Type": "RFx",
+            "Fields": "Proj. name",
+            "DISP": false,
+            "REQ": false
+        },
+        {
+            "Req. Key": 1001,
+            "Req. Type": "RFx",
+            "Fields": "Cyber Risk",
+            "DISP": true,
+            "REQ": true
+        },
+        {
+            "Req. Key": 1001,
+            "Req. Type": "RFx",
+            "Fields": "Est. Proj. Amount",
+            "DISP": true,
+            "REQ": true
+        },
+        {
+            "Req. Key": 1001,
+            "Req. Type": "RFx",
+            "Fields": "Budget Approved",
+            "DISP": true,
+            "REQ": true
+        },
+        {
+            "Req. Key": 1001,
+            "Req. Type": "RFx",
+            "Fields": "Type of Funding",
+            "DISP": true,
+            "REQ": true
+        },
+        {
+            "Req. Key": 1001,
+            "Req. Type": "RFx",
+            "Fields": "FRM Approval",
+            "DISP": true,
+            "REQ": true
+        },
+        {
+            "Req. Key": 1001,
+            "Req. Type": "RFx",
+            "Fields": "Edison Rep.",
+            "DISP": true,
+            "REQ": false
+        },
+        {
+            "Req. Key": 1001,
+            "Req. Type": "RFx",
+            "Fields": "Justification",
+            "DISP": true,
+            "REQ": true
+        },
+        {
+            "Req. Key": 1001,
+            "Req. Type": "RFx",
+            "Fields": "Comments",
+            "DISP": true,
+            "REQ": false
+        },
+        {
+            "Req. Key": 1002,
+            "Req. Type": "Contract Negotiations",
+            "Fields": "Proj. name",
+            "DISP": true,
+            "REQ": false
+        },
+        {
+            "Req. Key": 1002,
+            "Req. Type": "Contract Negotiations",
+            "Fields": "Cyber Risk",
+            "DISP": true,
+            "REQ": true
+        },
+        {
+            "Req. Key": 1002,
+            "Req. Type": "Contract Negotiations",
+            "Fields": "Est. Proj. Amount",
+            "DISP": true,
+            "REQ": true
+        },
+        {
+            "Req. Key": 1002,
+            "Req. Type": "Contract Negotiations",
+            "Fields": "Budget Approved",
+            "DISP": true,
+            "REQ": true
+        },
+        {
+            "Req. Key": 1002,
+            "Req. Type": "Contract Negotiations",
+            "Fields": "Type of Funding",
+            "DISP": true,
+            "REQ": true
+        },
+        {
+            "Req. Key": 1002,
+            "Req. Type": "Contract Negotiations",
+            "Fields": "FRM Approval",
+            "DISP": true,
+            "REQ": true
+        },
+        {
+            "Req. Key": 1002,
+            "Req. Type": "Contract Negotiations",
+            "Fields": "Edison Rep.",
+            "DISP": true,
+            "REQ": false
+        },
+        {
+            "Req. Key": 1002,
+            "Req. Type": "Contract Negotiations",
+            "Fields": "Justification",
+            "DISP": true,
+            "REQ": true
+        },
+        {
+            "Req. Key": 1002,
+            "Req. Type": "Contract Negotiations",
+            "Fields": "Comments",
+            "DISP": true,
+            "REQ": false
+        },
+        {
+            "Req. Key": 1003,
+            "Req. Type": "Contract Amendment",
+            "Fields": "Proj. name",
+            "DISP": true,
+            "REQ": false
+        },
+        {
+            "Req. Key": 1003,
+            "Req. Type": "Contract Amendment",
+            "Fields": "Cyber Risk",
+            "DISP": true,
+            "REQ": true
+        },
+        {
+            "Req. Key": 1003,
+            "Req. Type": "Contract Amendment",
+            "Fields": "Est. Proj. Amount",
+            "DISP": true,
+            "REQ": true
+        },
+        {
+            "Req. Key": 1003,
+            "Req. Type": "Contract Amendment",
+            "Fields": "Budget Approved",
+            "DISP": true,
+            "REQ": true
+        },
+        {
+            "Req. Key": 1003,
+            "Req. Type": "Contract Amendment",
+            "Fields": "Type of Funding",
+            "DISP": true,
+            "REQ": true
+        },
+        {
+            "Req. Key": 1003,
+            "Req. Type": "Contract Amendment",
+            "Fields": "FRM Approval",
+            "DISP": false,
+            "REQ": true
+        },
+        {
+            "Req. Key": 1003,
+            "Req. Type": "Contract Amendment",
+            "Fields": "Edison Rep.",
+            "DISP": true,
+            "REQ": false
+        },
+        {
+            "Req. Key": 1003,
+            "Req. Type": "Contract Amendment",
+            "Fields": "Justification",
+            "DISP": false,
+            "REQ": true
+        },
+        {
+            "Req. Key": 1003,
+            "Req. Type": "Contract Amendment",
+            "Fields": "Comments",
+            "DISP": true,
+            "REQ": false
+        }
+    ],
+    "FormData": {
+        "CreatedBy": "Sayeed",
+        "For": "Service",
+        "Project Name": "ISAT",
+        "Enterprise Procurement": "Indirect Procurement",
+        "ProjectAmount": "$ 8,000,000.00",
+        "FRM Approval": "Yes",
+        "Edison Rep": "",
+        "RequestedFor": [
+            {
+                "key": "REQ_01",
+                "value": "Requestor 1"
+            },
+            {
+                "key": "REQ_02",
+                "value": "Requestor 2"
+            },
+            {
+                "key": "REQ_03",
+                "value": "Requestor 3"
+            }
+        ],
+        "MaterialGroup": [
+            {
+                "key": "INSULATION SERVICE,-INSULATION SERVICE GENERAL",
+                "value": "INSULATION SERVICE,-INSULATION SERVICE GENERAL"
+            },
+            {
+                "key": "NEVDA GEN STA MAINT-GENERATOR STATION MAINTENANCE, NEVADA",
+                "value": "NEVDA GEN STA MAINT-GENERATOR STATION MAINTENANCE, NEVADA"
+            }
+        ],
+        "Category": [
+            {
+                "key": "PG_01",
+                "value": "ADMINISTRATIVE & GENERAL SERVICES"
+            },
+            {
+                "key": "PG_02",
+                "value": "AIRCRAFT OPERATIONS"
+            },
+            {
+                "key": "PG_03",
+                "value": "APPARATUS"
+            },
+            {
+                "key": "PG_04",
+                "value": "B MATERIALS"
+            },
+            {
+                "key": "PG_05",
+                "value": "BUSINESS SUPPORT SERVICES"
+            },
+            {
+                "key": "PG_06",
+                "value": "CAP BANKS"
+            },
+            {
+                "key": "PG_07",
+                "value": "CARRIER SOLUTIONS"
+            },
+            {
+                "key": "PG_08",
+                "value": "CHEMICALS"
+            },
+            {
+                "key": "PG_09",
+                "value": "CHEMICALS & GASES"
+            },
+            {
+                "key": "PG_10",
+                "value": "CIRCUIT BREAKERS"
+            },
+            {
+                "key": "PG_11",
+                "value": "CIVIL CONSTRUCTION"
+            },
+            {
+                "key": "PG_12",
+                "value": "CONSTRUCTION MANAGEMENT SERVICES"
+            },
+            {
+                "key": "PG_13",
+                "value": "CONSTRUCTION MATERIALS"
+            },
+            {
+                "key": "PG_14",
+                "value": "CUSTOMER PROGRAMS"
+            },
+            {
+                "key": "PG_15",
+                "value": "DESIGN & PLANNING"
+            },
+            {
+                "key": "PG_16",
+                "value": "DIST. DESIGN/PLANNING"
+            },
+            {
+                "key": "PG_17",
+                "value": "DISTRIBUTION TRANSFORMERS"
+            },
+            {
+                "key": "PG_18",
+                "value": "ENGINEERING/PLANNING/COORDINATION"
+            },
+            {
+                "key": "PG_19",
+                "value": "ENVIRONMENTAL SERVICES"
+            },
+            {
+                "key": "PG_20",
+                "value": "FABRICATION BUILDINGS/ROOMS"
+            },
+            {
+                "key": "PG_21",
+                "value": "FACILITIES"
+            },
+            {
+                "key": "PG_22",
+                "value": "FIELD SUPPORT SERVICES"
+            },
+            {
+                "key": "PG_23",
+                "value": "FREIGHT AND HEAVY HAULING"
+            },
+            {
+                "key": "PG_24",
+                "value": "GENERATION SERVICES"
+            },
+            {
+                "key": "PG_25",
+                "value": "INSPECTION SERVICES"
+            },
+            {
+                "key": "PG_26",
+                "value": "INVESTMENT RECOVERY"
+            },
+            {
+                "key": "PG_27",
+                "value": "LARGE APPARATUS & ENGINEERED PRODUCT"
+            },
+            {
+                "key": "PG_28",
+                "value": "LINE CONSTRUCTION"
+            },
+            {
+                "key": "PG_29",
+                "value": "METERS"
+            },
+            {
+                "key": "PG_30",
+                "value": "NON-OUTAGE MAINTENANCE, CONSTRUCTION, AND SUPPORT"
+            },
+            {
+                "key": "PG_31",
+                "value": "OUTAGE MAINTENANCE, CONSTRUCTION, AND SUPPORT SERV"
+            },
+            {
+                "key": "PG_32",
+                "value": "POLES"
+            },
+            {
+                "key": "PG_33",
+                "value": "POWER PRODUCTION MATERIAL"
+            },
+            {
+                "key": "PG_34",
+                "value": "RENTAL"
+            },
+            {
+                "key": "PG_35",
+                "value": "SONGS - OTHER"
+            },
+            {
+                "key": "PG_36",
+                "value": "SSID MATERIALS/SERVICES"
+            },
+            {
+                "key": "PG_37",
+                "value": "STEEL STRUCTURES"
+            },
+            {
+                "key": "PG_38",
+                "value": "STRATEGIC CHEMICALS & COMMODITIES"
+            },
+            {
+                "key": "PG_39",
+                "value": "STREET LIGHTING"
+            },
+            {
+                "key": "PG_40",
+                "value": "STREET LIGHTS"
+            },
+            {
+                "key": "PG_41",
+                "value": "SUBSTATION CONSTRUCTION"
+            },
+            {
+                "key": "PG_42",
+                "value": "SWITCHES"
+            },
+            {
+                "key": "PG_43",
+                "value": "TBD"
+            },
+            {
+                "key": "PG_44",
+                "value": "TECHNOLOGY"
+            },
+            {
+                "key": "PG_45",
+                "value": "TRAFFIC CONTROL"
+            },
+            {
+                "key": "PG_46",
+                "value": "TRANSFORMER"
+            },
+            {
+                "key": "PG_47",
+                "value": "TRANSMISSION"
+            },
+            {
+                "key": "PG_48",
+                "value": "TRANSMISSION/MPO"
+            },
+            {
+                "key": "PG_49",
+                "value": "UTILITY VEGETATION MGMT"
+            },
+            {
+                "key": "PG_50",
+                "value": "VEHICLE FLEET"
+            },
+            {
+                "key": "PG_51",
+                "value": "WIRE & CABLE"
+            },
+            {
+                "key": "PG_52",
+                "value": "WOOD POLES"
+            }
+        ],
+        "PurchaseGroup": [
+            {
+                "key": "PG_01",
+                "value": "Purchase Group 1"
+            },
+            {
+                "key": "PG_02",
+                "value": "Purchase Group 2"
+            },
+            {
+                "key": "PG_03",
+                "value": "Purchase Group 3"
+            }
+        ],
+        "OrgUnits": [
+            {
+                "key": "OU_10",
+                "value": "Environmental Services"
+            },
+            {
+                "key": "OU_14",
+                "value": "Generation"
+            },
+            {
+                "key": "OU_18",
+                "value": "IT"
+            }
+        ],
+        "PotentialSuppliers": [
+            {
+                "key": "SUP_100001",
+                "value": "100001-XYZ"
+            },
+            {
+                "key": "SUP_100002",
+                "value": "100002-ABC"
+            },
+            {
+                "key": "SUP_100003",
+                "value": "100003-SHK"
+            },
+            {
+                "key": "SUP_100004",
+                "value": "100004-ANAND-PAG"
+            }
+        ],
+        "ProcurementAgents": [
+            {
+                "key": "AGENT_01",
+                "value": "Proc-Agent-1"
+            },
+            {
+                "key": "AGENT_02",
+                "value": "Proc-Agent-2"
+            },
+            {
+                "key": "AGENT_03",
+                "value": "Proc-Agent-3"
+            },
+            {
+                "key": "AGENT_04",
+                "value": "Proc-Agent-4"
+            }
+        ],
+        "TypeOfFunding": [
+            {
+                "key": "CAPITAL",
+                "value": "Capital"
+            },
+            {
+                "key": "OM",
+                "value": "O & M"
+            },
+            {
+                "key": "OTHER",
+                "value": "Other"
+            }
+        ],
+        "BudgetApproved": [
+            {
+                "key": "YES",
+                "value": "Yes"
+            },
+            {
+                "key": "NO",
+                "value": "No"
+            },
+            {
+                "key": "NA",
+                "value": "N/A"
+            }
+        ],
+        "CommodityType": [
+            {
+                "key": "HARDWARE",
+                "value": "Hardware"
+            },
+            {
+                "key": "SOFTWARE",
+                "value": "Software"
+            },
+            {
+                "key": "SERVICES",
+                "value": "Services"
+            },
+            {
+                "key": "OTHER",
+                "value": "Other"
+            }
+        ],
+        "NERC_CIP": [
+            {
+                "key": "YES",
+                "value": "YES"
+            },
+            {
+                "key": "NO",
+                "value": "NO"
+            }
+        ],
+        "RequirementType": [
+            {
+                "key": "CHANGE_ORDER",
+                "value": "Change Order"
+            },
+            {
+                "key": "Contract Negotiations",
+                "value": "Contract Negotiations"
+            },
+            {
+                "key": "COMMERCIAL_TERMS",
+                "value": "Commercial Terms Negotiation"
+            },
+            {
+                "key": "PO_REQUEST",
+                "value": "PO Request"
+            },
+            {
+                "key": "PROCESS_IMPROVEMENT",
+                "value": "Process Improvement"
+            },
+            {
+                "key": "RFx",
+                "value": "RFx"
+            },
+            {
+                "key": "SUPPLIER_QUALIFICATION",
+                "value": "Supplier Qualification"
+            },
+            {
+                "key": "SOW",
+                "value": "SOW"
+            },
+            {
+                "key": "VENDOR_MASTER_DATA",
+                "value": "Vendor Master Data Update"
+            },
+            {
+                "key": "OTHER",
+                "value": "Other"
+            }
+        ],
+        "CyberRiskLevel": [
+            {
+                "key": "LEVEL_1",
+                "value": "1"
+            },
+            {
+                "key": "LEVEL_2",
+                "value": "2"
+            },
+            {
+                "key": "LEVEL_3",
+                "value": "3"
+            },
+            {
+                "key": "LEVEL_4",
+                "value": "4"
+            }
+        ],
+        "Priority": [
+            {
+                "key": "P1",
+                "value": "P1"
+            },
+            {
+                "key": "P2",
+                "value": "P2"
+            },
+            {
+                "key": "P3",
+                "value": "P3"
+            },
+            {
+                "key": "P4",
+                "value": "P4"
+            }
+        ]
+    }
+}

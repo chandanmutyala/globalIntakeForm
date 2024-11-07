@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="EnterpriseProcurementService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotation Term="Core.Links">
+                <Collection>
+                    <Record>
+                        <PropertyValue Property="rel" String="author"/>
+                        <PropertyValue Property="href" String="https://cap.cloud.sap"/>
+                    </Record>
+                </Collection>
+            </Annotation>
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="RequestTypes" EntityType="EnterpriseProcurementService.RequestTypes"/>
+                <EntitySet Name="RequestConfigs" EntityType="EnterpriseProcurementService.RequestConfigs">
+                    <NavigationPropertyBinding Path="requestType" Target="RequestTypes"/>
+                </EntitySet>
+                <EntitySet Name="Documentations" EntityType="EnterpriseProcurementService.Documentations">
+                    <NavigationPropertyBinding Path="requestID" Target="RequestTypes"/>
+                </EntitySet>
+                <EntitySet Name="Materials" EntityType="EnterpriseProcurementService.Materials"/>
+                <EntitySet Name="Categories" EntityType="EnterpriseProcurementService.Categories"/>
+                <EntitySet Name="PurchasingGroups" EntityType="EnterpriseProcurementService.PurchasingGroups"/>
+                <EntitySet Name="RequestTypeMappings" EntityType="EnterpriseProcurementService.RequestTypeMappings">
+                    <NavigationPropertyBinding Path="requestType" Target="RequestTypes"/>
+                    <NavigationPropertyBinding Path="materialGroup" Target="Materials"/>
+                    <NavigationPropertyBinding Path="categoryID" Target="Categories"/>
+                    <NavigationPropertyBinding Path="groupID" Target="PurchasingGroups"/>
+                </EntitySet>
+                <EntitySet Name="IntakeRequests" EntityType="EnterpriseProcurementService.IntakeRequests">
+                    <NavigationPropertyBinding Path="categoryID" Target="Categories"/>
+                    <NavigationPropertyBinding Path="materialGroup" Target="Materials"/>
+                    <NavigationPropertyBinding Path="groupID" Target="PurchasingGroups"/>
+                    <NavigationPropertyBinding Path="documentID" Target="Documentations"/>
+                    <NavigationPropertyBinding Path="questionarieID" Target="RiskQuestionnaires"/>
+                    <NavigationPropertyBinding Path="workflowAudit" Target="WorkflowAudits"/>
+                </EntitySet>
+                <EntitySet Name="RiskQuestionnaires" EntityType="EnterpriseProcurementService.RiskQuestionnaires">
+                    <NavigationPropertyBinding Path="request" Target="IntakeRequests"/>
+                </EntitySet>
+                <EntitySet Name="WorkflowAudits" EntityType="EnterpriseProcurementService.WorkflowAudits">
+                    <NavigationPropertyBinding Path="requestID" Target="IntakeRequests"/>
+                </EntitySet>
+                <FunctionImport Name="searchRequestType" Function="EnterpriseProcurementService.searchRequestType" EntitySet="RequestTypes"/>
+            </EntityContainer>
+            <EntityType Name="RequestTypes">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="requestName" Type="Edm.String"/>
+                <Property Name="isActive" Type="Edm.Boolean"/>
+                <Property Name="description" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="RequestConfigs">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <NavigationProperty Name="requestType" Type="EnterpriseProcurementService.RequestTypes">
+                    <ReferentialConstraint Property="requestType_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="requestType_ID" Type="Edm.Guid"/>
+                <Property Name="attribute" Type="Edm.String"/>
+                <Property Name="isDisplay" Type="Edm.Boolean"/>
+                <Property Name="isRequired" Type="Edm.Boolean"/>
+            </EntityType>
+            <EntityType Name="Documentations">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="documentName" Type="Edm.String"/>
+                <Property Name="attachments" Type="Edm.String"/>
+                <NavigationProperty Name="requestID" Type="EnterpriseProcurementService.RequestTypes">
+                    <ReferentialConstraint Property="requestID_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="requestID_ID" Type="Edm.Guid"/>
+            </EntityType>
+            <EntityType Name="Materials">
+                <Key>
+                    <PropertyRef Name="materialGroup"/>
+                </Key>
+                <Property Name="materialGroup" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="shortDescription" Type="Edm.String"/>
+                <Property Name="longDescription" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="Categories">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="area" Type="Edm.String"/>
+                <Property Name="description" Type="Edm.String"/>
+                <Property Name="subCategoryDescription" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="PurchasingGroups">
+                <Key>
+                    <PropertyRef Name="groupID"/>
+                </Key>
+                <Property Name="groupID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="description" Type="Edm.String"/>
+                <Property Name="procurementAgentEmail" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="RequestTypeMappings">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false"/>
+                <NavigationProperty Name="requestType" Type="EnterpriseProcurementService.RequestTypes">
+                    <ReferentialConstraint Property="requestType_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="requestType_ID" Type="Edm.Guid"/>
+                <Property Name="links" Type="Edm.String"/>
+                <NavigationProperty Name="materialGroup" Type="EnterpriseProcurementService.Materials">
+                    <ReferentialConstraint Property="materialGroup_materialGroup" ReferencedProperty="materialGroup"/>
+                </NavigationProperty>
+                <Property Name="materialGroup_materialGroup" Type="Edm.Guid"/>
+                <NavigationProperty Name="categoryID" Type="EnterpriseProcurementService.Categories">
+                    <ReferentialConstraint Property="categoryID_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="categoryID_ID" Type="Edm.Guid"/>
+                <NavigationProperty Name="groupID" Type="EnterpriseProcurementService.PurchasingGroups">
+                    <ReferentialConstraint Property="groupID_groupID" ReferencedProperty="groupID"/>
+                </NavigationProperty>
+                <Property Name="groupID_groupID" Type="Edm.Guid"/>
+            </EntityType>
+            <EntityType Name="IntakeRequests">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="createdBy" Type="Edm.String"/>
+                <Property Name="onBehalfOf" Type="Edm.String"/>
+                <Property Name="department" Type="Edm.String"/>
+                <Property Name="needbyDate" Type="Edm.Date"/>
+                <NavigationProperty Name="categoryID" Type="EnterpriseProcurementService.Categories">
+                    <ReferentialConstraint Property="categoryID_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="categoryID_ID" Type="Edm.Guid"/>
+                <NavigationProperty Name="materialGroup" Type="EnterpriseProcurementService.Materials">
+                    <ReferentialConstraint Property="materialGroup_materialGroup" ReferencedProperty="materialGroup"/>
+                </NavigationProperty>
+                <Property Name="materialGroup_materialGroup" Type="Edm.Guid"/>
+                <NavigationProperty Name="groupID" Type="EnterpriseProcurementService.PurchasingGroups">
+                    <ReferentialConstraint Property="groupID_groupID" ReferencedProperty="groupID"/>
+                </NavigationProperty>
+                <Property Name="groupID_groupID" Type="Edm.Guid"/>
+                <NavigationProperty Name="documentID" Type="EnterpriseProcurementService.Documentations">
+                    <ReferentialConstraint Property="documentID_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="documentID_ID" Type="Edm.Guid"/>
+                <Property Name="comments" Type="Edm.String"/>
+                <NavigationProperty Name="questionarieID" Type="EnterpriseProcurementService.RiskQuestionnaires">
+                    <ReferentialConstraint Property="questionarieID_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="questionarieID_ID" Type="Edm.Guid"/>
+                <NavigationProperty Name="workflowAudit" Type="EnterpriseProcurementService.WorkflowAudits">
+                    <ReferentialConstraint Property="workflowAudit_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="workflowAudit_ID" Type="Edm.Guid"/>
+            </EntityType>
+            <EntityType Name="RiskQuestionnaires">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="question" Type="Edm.String"/>
+                <NavigationProperty Name="request" Type="EnterpriseProcurementService.IntakeRequests">
+                    <ReferentialConstraint Property="request_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="request_ID" Type="Edm.Guid"/>
+            </EntityType>
+            <EntityType Name="WorkflowAudits">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <NavigationProperty Name="requestID" Type="EnterpriseProcurementService.IntakeRequests">
+                    <ReferentialConstraint Property="requestID_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="requestID_ID" Type="Edm.Guid"/>
+                <Property Name="status" Type="Edm.String"/>
+                <Property Name="submittedDate" Type="Edm.DateTimeOffset"/>
+                <Property Name="workflowInstanceID" Type="Edm.String"/>
+                <Property Name="approver" Type="Edm.String"/>
+            </EntityType>
+            <Function Name="searchRequestType" IsBound="false" IsComposable="false">
+                <Parameter Name="searchValue" Type="Edm.String"/>
+                <ReturnType Type="Collection(EnterpriseProcurementService.RequestTypes)"/>
+            </Function>
+            <Annotations Target="EnterpriseProcurementService.RequestTypes/createdAt">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="UI.ExcludeFromNavigationContext" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="EnterpriseProcurementService.RequestTypes/createdBy">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="UI.ExcludeFromNavigationContext" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="EnterpriseProcurementService.RequestTypes/modifiedAt">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="UI.ExcludeFromNavigationContext" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="EnterpriseProcurementService.RequestTypes/modifiedBy">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="UI.ExcludeFromNavigationContext" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="EnterpriseProcurementService.RequestTypes/ID">
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+            <Annotations Target="EnterpriseProcurementService.RequestConfigs/createdAt">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="UI.ExcludeFromNavigationContext" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="EnterpriseProcurementService.RequestConfigs/createdBy">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="UI.ExcludeFromNavigationContext" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="EnterpriseProcurementService.RequestConfigs/modifiedAt">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="UI.ExcludeFromNavigationContext" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="EnterpriseProcurementService.RequestConfigs/modifiedBy">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="UI.ExcludeFromNavigationContext" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="EnterpriseProcurementService.RequestConfigs/ID">
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+            <Annotations Target="EnterpriseProcurementService.Documentations/ID">
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+            <Annotations Target="EnterpriseProcurementService.Materials/materialGroup">
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+            <Annotations Target="EnterpriseProcurementService.Categories/ID">
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+            <Annotations Target="EnterpriseProcurementService.PurchasingGroups/groupID">
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+            <Annotations Target="EnterpriseProcurementService.IntakeRequests/ID">
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+            <Annotations Target="EnterpriseProcurementService.RiskQuestionnaires/createdAt">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="UI.ExcludeFromNavigationContext" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="EnterpriseProcurementService.RiskQuestionnaires/createdBy">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="UI.ExcludeFromNavigationContext" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="EnterpriseProcurementService.RiskQuestionnaires/modifiedAt">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="UI.ExcludeFromNavigationContext" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="EnterpriseProcurementService.RiskQuestionnaires/modifiedBy">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="UI.ExcludeFromNavigationContext" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="EnterpriseProcurementService.RiskQuestionnaires/ID">
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+            <Annotations Target="EnterpriseProcurementService.WorkflowAudits/ID">
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
