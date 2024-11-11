@@ -1,307 +1,191 @@
-<mvc:View controllerName="globalintakeform.controller.IntakeForm"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+<mvc:View
+    height="100%"
+    controllerName="globalintakeform.controller.IntakeForm"
     xmlns:form="sap.ui.layout.form"
     xmlns:core="sap.ui.core"
     xmlns:u="sap.ui.unified"
     xmlns:l="sap.ui.layout"
     xmlns:tnt="sap.tnt"
     xmlns:f="sap.ui.layout.form"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-         <content>
-            <Panel
-                id="RequestForm"
-                visible="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+>
+    <NavContainer id="wizardNavContainer">
+        <pages>
+            <Page
+                id="wizardContentPage"
+                showHeader="false"
             >
-                <!-- <tnt:ToolHeader
-                    id="shellLikeToolHeader"
-                    class="sapUiTinyMargin"
-                >
-                    <Title
-                        text="Global Intake Form"
-                        wrapping="false"
-                        id="FormName"
-                        textAlign="Center"
-                    >
-                        <layoutData>
-                            <OverflowToolbarLayoutData priority="Disappear" />
-                        </layoutData>
-                    </Title>
+                <content>
+                    <Wizard
+                        id="CreateProductWizard"
+                        class="sapUiResponsivePadding--header sapUiResponsivePadding--content"
+                        complete="wizardCompletedHandler"
+                        finishButtonText="Submit"
+                        
 
-                    <ToolbarSpacer />
-                </tnt:ToolHeader> -->
-                <Wizard
-                    id="CreateProductWizard"
-                    finishButtonText="Submit"
-                    currentStep="ProductTypeStep"
-                    class="sapUiResponsivePadding--header sapUiResponsivePadding--content"
-                    height="100%"
-                    complete="onComplete"
-                >
-                    <WizardStep
-                        id="ProductTypeStep"
-                        title="Select the appropriate request type and other details as required"
                     >
-                        <VBox class="">
-                            <f:SimpleForm
-                                id="234"
-                                editable="true"
-                                layout="ColumnLayout"
-                                columnsM="2"
-                                columnsL="3"
-                                columnsXL="4"
-                            >
-                                <f:content>
-                                    <core:Title text="" />
-                                    <Label
-                                        text="Created By"
-                                        required="true"
-                                    />
-                                    <Input
-                                        id="createdByid"
-                                        value="{jsonModel>/FormData/CreatedBy}"
-                                        placeholder="CreatedBy"
-                                    />
-                                     <Label
-                                        text="Operating Unit (OU)"
-                                        required="true"
-                                    />
+                        <WizardStep
+                            id="ProductTypeStep"
+                            title="Select the appropriate request type and other details as required"
+                        >
+                            <VBox class="">
+                                <f:SimpleForm
+                                    id="234"
+                                    editable="true"
+                                    layout="ColumnLayout"
+                                    columnsM="2"
+                                    columnsL="3"
+                                    columnsXL="4"
+                                >
+                                    <f:content>
+                                        <core:Title text="" />
+                                        <Label
+                                            text="Request Type Bc"
+                                            required="true"
+                                        />
                                         <ComboBox
-                                        id="OUID"
-                                        placeholder="Select Organization Unit"
-                                        items="{
-					path: 'jsonModel>/FormData/OrgUnits',
-					sorter: { path: 'text' }
-				}"
-                                    >
-                                        <core:Item
-                                            key="{jsonModel>key}"
-                                            text="{jsonModel>value}"
-                                        />
-                                    </ComboBox>
-                                     <Label
-                                        text="Department"
-                                        required="false"
-                                    />
-                                    <Input
-                                        id="Department"
-                                        value=""
-                                        placeholder=""
-                                    />
-                                     <Label
-                                        text="Category"
-                                        required="true"
-                                    />
-                                    <ComboBox
-                                        id="idcategory"
-                                        placeholder="Select Category"
-                                        items="{
-						path: 'jsonModel>/FormData/Category',
-					
-					sorter: { path: 'text' }
-				}"
-                                    >
-                                        <core:Item
-                                            key="{jsonModel>key}"
-                                            text="{jsonModel>value}"
-                                        />
-                                    </ComboBox>
-                                     <Label
-                                        text="Sub-Category"
-                                        required="true"
-                                    />
-                                    <Input
-                                        id="Sub-Category"
-                                        value="CIVIL CONSTRUCTION--CIVIL STRUCTURE CONST"
-                                       
-                                    />
-                                    <Label
-                                        text="On Behalf of"
-                                        required="false"
-                                    />
-                                    <Input
-                                        id="OnBehalfof"
-                                        value=""
-                                        
-                                    />
-                                     <Label
-                                        text="NERC CIP"
-                                        required="true"
-                                    />
-                                     <ComboBox
-                                        id="idNERCCIP"
-                                        placeholder="Select NERC CIP"
-                                        items="{
-						path: 'jsonModel>/FormData/NERC_CIP',
-					
-					sorter: { path: 'text' }
-				}"
-                                    >
-                                        <core:Item
-                                            key="{jsonModel>key}"
-                                            text="{jsonModel>value}"
-                                        />
-                                    </ComboBox>
-                                    <Label
-                                        text="Priority"
-                                        required="false"
-                                    />
-                                    <ComboBox
-                                        id="idPxriority"
-                                        placeholder="Select Priority"
-                                        items="{
-						path: 'jsonModel>/FormData/Priority',
-					
-					sorter: { path: 'text' }
-				}"
-                                    >
-                                        <core:Item
-                                            key="{jsonModel>key}"
-                                            text="{jsonModel>value}"
-                                        />
-                                    </ComboBox>
-                                          <Label
-                                        text="Needed by Date"
-                                        required="false"
-                                    />
-                                    <DatePicker
-                                        id="NeededbyDate"
-                                        
-                                        required="false"
-                                        value="{}"
-                                    />  
-
-                                    <Label
-                                        text="Requested for"
-                                        required="false"
-                                    />
-                                    <ComboBox
-                                        id="RequestedforID"
-                                        placeholder="Select Requested for"
-                                        items="{
-                                        
-					path: 'jsonModel>/FormData/RequestedFor'
-					
-				}"
-                                    >
-                                        <core:Item
-                                            key="{jsonModel>key}"
-                                            text="{jsonModel>value}"
-                                        />
-                                    </ComboBox>
-
-                                    <Label
-                                        text="Material Group"
-                                        required="false"
-                                    />
-                                    <ComboBox
-                                        id="materialgroupID"
-                                        placeholder="Select Material Group"
-                                        selectionChange="onMaterialGroupSelect"
-                                        items="{
-					path: 'jsonModel>/FormData/MaterialGroup'
-				}"
-                                    >
-                                        <core:Item
-                                            key="{jsonModel>key}"
-                                            text="{jsonModel>value}"
-                                        />
-                                    </ComboBox>
-
-                                    <Label
-                                        text="Purchase Group"
-                                        required="false"
-                                    />
-                                    <ComboBox
-                                        id="idPurchaseGroup"
-                                        placeholder="Select Purchase Group"
-                                        selectionChange="onPurGroupSelect"
-                                        items="{
-						path: 'jsonModel>/FormData/PurchaseGroup',
-					
-					sorter: { path: 'text' }
-				}"
-                                    >
-                                        <core:Item
-                                            key="{jsonModel>key}"
-                                            text="{jsonModel>value}"
-                                        />
-                                    </ComboBox>
-                                      <Label
-                                        text="Request Type"
-                                        required="true"
-                                    />
-                                     <ComboBox
-                                        id="RequirementType"
-                                        placeholder="Select Purchase Group"
-                                        selectionChange="onPurGroupSelect"
-                                        items="{
-						path: 'jsonModel>/FormData/RequirementType',
-					
-					sorter: { path: 'text' }
-				}"
-                                    >
-                                        <core:Item
-                                            key="{jsonModel>key}"
-                                            text="{jsonModel>value}"
-                                        />
-                                    </ComboBox>
-                                    <Label
-    text="Request Type Bc"
-    required="true"
-/>
-<ComboBox
-    id="RequirementbcType"
-    placeholder="Select Purchase Group"
-    selectionChange="onRequestTypeSelect"
-    items="{
+                                            id="RequirementbcType"
+                                            placeholder="Select Purchase Group"
+                                            selectionChange="onRequestTypeSelect"
+                                            items="{
         path: '/RequestTypes',
         sorter: { path: 'requestName' },
         filters: [{ path: 'isActive', operator: 'EQ', value1: true }]
     }"
->
-    <core:Item
-        key="{ID}"
-        text="{requestName}"
-        tooltip="{description}"
-    />
-</ComboBox>
-
-                                  
+                                        >
+                                            <core:Item
+                                                key="{ID}"
+                                                text="{requestName}"
+                                                tooltip="{description}"
+                                            />
+                                        </ComboBox>
                                         <Label
-                                        text="Proc. Agent" 
-                                        required="false"
-                                    />
-                                    <Input
-                                        id="ProcAgent"
-                                        value="Suzann.Hashem@sce.com"
-                                        required="true"
-                                        
-                                    />
-                                    
-                                </f:content>
-                            </f:SimpleForm>
-                        </VBox>
-                    </WizardStep>
+                                            text="Requestor Name"
+                                            required="true"
+                                        />
+                                        <Input
+                                            id="createdByid"
+                                            value="{jsonModel>/FormData/CreatedBy}"
+                                            placeholder="CreatedBy"
+                                        />
+                                        <Label
+                                            text="Operating Unit (OU)"
+                                            required="true"
+                                        />
+                                        <ComboBox
+                                            id="OUID"
+                                            placeholder="Select Organization Unit"
+                                            items="{
+					path: 'jsonModel>/FormData/OrgUnits',
+					sorter: { path: 'text' }
+				}"
+                                        >
+                                            <core:Item
+                                                key="{jsonModel>key}"
+                                                text="{jsonModel>value}"
+                                            />
+                                        </ComboBox>
+                                        <Label
+                                            text="Department"
+                                            required="false"
+                                        />
+                                        <Input
+                                            id="Department"
+                                            value=""
+                                            placeholder=""
+                                        />
+                                         <Label
+                                            text="Supervisor"
+                                            required="false"
+                                        />
+                                        <Input
+                                            id="Supervisor"
+                                            value=""
+                                            placeholder=""
+                                        />
+                                      
+                                        <Label
+                                            text="On Behalf of"
+                                            required="false"
+                                        />
+                                        <Input
+                                            id="OnBehalfof"
+                                            value=""
+                                        />
+                                       
+                                      
+                                        <Label
+                                            text="Needed by Date"
+                                            required="false"
+                                        />
+                                        <DatePicker
+                                            id="NeededbyDate"
+                                            displayFormat = "yyy-MM-dd"
+                                            valueFormat = "yyy-MM-dd"
+                                            required="false"
+                                            value="{}"
+                                        />
+                                          <Label
+                                            text="Priority"
+                                            required="false"
+                                        />
+                                        <ComboBox
+                                            id="idPxriority"
+                                            placeholder="Select Priority"
+                                            items="{
+						path: 'jsonModel>/FormData/Priority',
+					
+					sorter: { path: 'text' }
+				}"
+                                        >
+                                            <core:Item
+                                                key="{jsonModel>key}"
+                                                text="{jsonModel>value}"
+                                            />
+                                        </ComboBox>
+                                         <Label
+                                            text="NERC CIP"
+                                            required="true"
+                                        />
+                                        <ComboBox
+                                            id="idNERCCIP"
+                                            placeholder="Select NERC CIP"
+                                            items="{
+						path: 'jsonModel>/FormData/NERC_CIP',
+					
+					sorter: { path: 'text' }
+				}"
+                                        >
+                                            <core:Item
+                                                key="{jsonModel>key}"
+                                                text="{jsonModel>value}"
+                                            />
+                                        </ComboBox>
 
-                    <WizardStep
-                        id="ProductInfoStep"
-                        title="Fill all the required fields and provide the project justificaiton"
-                    >
-                        <!-- Table to be shown when the selected keys match -->
-                        
+                                         
+                                    </f:content>
+                                </f:SimpleForm>
+                            </VBox>
+                        </WizardStep>
 
-                        <VBox class="">
-                            <f:SimpleForm
-                                id="234dd"
-                                editable="true"
-                                layout="ColumnLayout"
-                                columnsM="2"
-                                columnsL="3"
-                                columnsXL="4"
-                                visible="true"
-                            >
-                                <!-- <f:content>
+                        <WizardStep
+                            id="ProductInfoStep"
+                            title="Fill all the required fields and provide the project justificaiton"
+                        >
+                            <!-- Table to be shown when the selected keys match -->
+
+                            <VBox class="">
+                                <f:SimpleForm
+                                    id="234dd"
+                                    editable="true"
+                                    layout="ColumnLayout"
+                                    columnsM="2"
+                                    columnsL="3"
+                                    columnsXL="4"
+                                    visible="true"
+                                >
+                                    <!-- <f:content>
                                     <core:Title text="" />
                                      <Label
                                         text="Project Name "
@@ -397,114 +281,129 @@
                                         id="Details"
                                     />
                                 </f:content> -->
-                            </f:SimpleForm>
-                        </VBox>
-                    </WizardStep>
-                   <WizardStep
-    id="questions"
-    title="Answer the questionnaire below to determine the risk"
-    validated="true"
->
-    <VBox >
-        <Label text="1. What type of request would you like to initiate (e.g., Purchase Requisition, Request New Vendor, Work Request, Operational Issue)?" />
-        <Input
-            id="requestType"
-            placeholder="Enter the type of request"
-        />
+                                </f:SimpleForm>
+                            </VBox>
+                        </WizardStep>
+                        <WizardStep
+                            id="questions"
+                            title="Answer the questionnaire below to determine the risk"
+                            validated="true"
+                        >
+                            <VBox>
+                                <Label
+                                    text="1. What type of request would you like to initiate (e.g., Purchase Requisition, Request New Vendor, Work Request, Operational Issue)?"
+                                />
+                                <Input
+                                    id="requestType"
+                                    placeholder="Enter the type of request"
+                                />
 
-        <Label text="2. What category does this request fall under (e.g., Materials, Services, Maintenance, Other)?" />
-        <Input
-            id="requestCategory"
-            placeholder="Enter the category"
-        />
+                                <Label
+                                    text="2. What category does this request fall under (e.g., Materials, Services, Maintenance, Other)?"
+                                />
+                                <Input
+                                    id="requestCategory"
+                                    placeholder="Enter the category"
+                                />
 
-        <Label text="3. Please provide a brief description of the request:" />
-        <Input
-            id="requestDescription"
-            placeholder="Enter a description"
-        />
+                                <Label
+                                    text="3. Please provide a brief description of the request:"
+                                />
+                                <Input
+                                    id="requestDescription"
+                                    placeholder="Enter a description"
+                                />
 
-        <Label text="4. Are there any specific details or considerations related to this request?" />
-        <Input
-            id="requestDetails"
-            placeholder="Provide additional details"
-        />
-    </VBox>
-</WizardStep>
+                                <Label
+                                    text="4. Are there any specific details or considerations related to this request?"
+                                />
+                                <Input
+                                    id="requestDetails"
+                                    placeholder="Provide additional details"
+                                />
+                            </VBox>
+                        </WizardStep>
 
+                        <WizardStep
+                            id="docs"
+                            title="Upload the related documents in the section below"
+                            validated="true"
+                        >
+                            <VBox>
+                                <Label text="1. Statement of Work (SOW)" />
+                                <u:FileUploader
+                                    id="fileUploader"
+                                    name="myFileUpload"
+                                    uploadUrl="upload/"
+                                    tooltip="Upload your file to the local server"
+                                    uploadComplete="handleUploadComplete"
+                                />
+                                <Button
+                                    text="Upload File"
+                                    press="handleUploadPress"
+                                />
 
-                    <WizardStep
-    id="docs"
-    title="Upload the related documents in the section below"
-    validated="true"
->
-    <VBox >
-      <Label text="1. Statement of Work (SOW)" />
-        	<u:FileUploader
-			id="fileUploader"
-			name="myFileUpload"
-			uploadUrl="upload/"
-			tooltip="Upload your file to the local server"
-			uploadComplete="handleUploadComplete"/>
-		<Button
-			text="Upload File"
-			press="handleUploadPress"/>
+                                <Label
+                                    text="2. Joint Operating Agreement (JOA)"
+                                />
+                                <u:FileUploader
+                                    id="fileUploacder"
+                                    name="myFileUpload"
+                                    uploadUrl="upload/"
+                                    tooltip="Upload your file to the local server"
+                                    uploadComplete="handleUploadComplete"
+                                />
+                                <Button
+                                    text="Upload File"
+                                    press="handleUploadPress"
+                                />
 
-        <Label text="2. Joint Operating Agreement (JOA)" />
-       	<u:FileUploader
-			id="fileUploacder"
-			name="myFileUpload"
-			uploadUrl="upload/"
-			tooltip="Upload your file to the local server"
-			uploadComplete="handleUploadComplete"/>
-		<Button
-			text="Upload File"
-			press="handleUploadPress"/>
+                                <Label text="3. Change Order Form" />
+                                <u:FileUploader
+                                    id="fileUpghloader"
+                                    name="myFileUpload"
+                                    uploadUrl="upload/"
+                                    tooltip="Upload your file to the local server"
+                                    uploadComplete="handleUploadComplete"
+                                />
+                                <Button
+                                    text="Upload File"
+                                    press="handleUploadPress"
+                                />
+                            </VBox>
+                        </WizardStep>
 
-        <Label text="3. Change Order Form" />
-        	<u:FileUploader
-			id="fileUpghloader"
-			name="myFileUpload"
-			uploadUrl="upload/"
-			tooltip="Upload your file to the local server"
-			uploadComplete="handleUploadComplete"/>
-		<Button
-			text="Upload File"
-			press="handleUploadPress"/>
-    </VBox>
-</WizardStep>
-
-
-                    <WizardStep
-                        id="PricingSteps"
-                        title="Submit if any Additional comments below"
-                        validated="true"
-                    >
-                        <VBox class="">
-                            <f:SimpleForm
-                                id="234hd"
-                                editable="true"
-                                layout="ColumnLayout"
-                                columnsM="2"
-                                columnsL="3"
-                                columnsXL="4"
-                            >
-                                <f:content>
-                                    <Label
-                                        text="Comments"
-                                        textAlign="Begin"
-                                    />
-                                    <TextArea
-                                        value="{}"
-                                        required="true"
-                                        id="Comments"
-                                    />
-                                </f:content>
-                            </f:SimpleForm>
-                        </VBox>
-                    </WizardStep>
-                </Wizard>
-            </Panel>
-        </content>
-    </Page>
+                        <WizardStep
+                            id="PricingSteps"
+                            title="Submit if any Additional comments below"
+                            validated="true"
+                        >
+                            <VBox class="">
+                                <f:SimpleForm
+                                    id="234hd"
+                                    editable="true"
+                                    layout="ColumnLayout"
+                                    columnsM="2"
+                                    columnsL="3"
+                                    columnsXL="4"
+                                >
+                                    <f:content>
+                                        <Label
+                                            text="Comments"
+                                            textAlign="Begin"
+                                        />
+                                        <TextArea
+                                            value="{}"
+                                            required="true"
+                                            id="Comments"
+                                        />
+                                    </f:content>
+                                </f:SimpleForm>
+                            </VBox>
+                        </WizardStep>
+                    </Wizard>
+                </content>
+            </Page>
+        </pages>
+    </NavContainer>
 </mvc:View>

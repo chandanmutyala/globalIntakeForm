@@ -1,1 +1,4 @@
-/* Enter your custom styles here */
+.sapUiSizeCompact .sapUiFormEdit .sapUiFormCLSmallColumns .sapUiFormCLContainer>.sapUiFormTitle{
+   
+    display: none !important;
+}
